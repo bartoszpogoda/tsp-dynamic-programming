@@ -6,6 +6,6 @@
 class Printer {
 public:
 	static void print(Instance* instance);
-	static void print(std::vector<std::set<int>*>* subsets);
+	static void print(std::vector<std::set<int>>* subsets);
 };
 

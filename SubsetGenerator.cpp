@@ -1,8 +1,8 @@
 #include "SubsetGenerator.h"
 #include <algorithm>
 
-std::vector<std::set<int>*>* SubsetGenerator::generateVerticleSubsets(int numberOfCities) {
-	std::vector<std::set<int>*>* verticleSubsets = new std::vector<std::set<int>*>();
+std::vector<std::set<int>>* SubsetGenerator::generateVerticleSubsets(int numberOfCities) {
+	std::vector<std::set<int>>* verticleSubsets = new std::vector<std::set<int>>();
 
 	std::vector<int> verticles = generateVerticleSet(numberOfCities - 1);
 
@@ -19,7 +19,7 @@ std::vector<std::set<int>*>* SubsetGenerator::generateVerticleSubsets(int number
 			}
 		}
 
-		verticleSubsets->push_back(newSubset);
+		verticleSubsets->push_back(*newSubset);
 	}
 
 	sortSubsets(verticleSubsets);
@@ -37,10 +37,10 @@ std::vector<int> SubsetGenerator::generateVerticleSet(int n) {
 	return result;
 }
 
-void SubsetGenerator::sortSubsets(std::vector<std::set<int>*>* subsets) {
+void SubsetGenerator::sortSubsets(std::vector<std::set<int>>* subsets) {
 	struct {
-		bool operator()(std::set<int>* setA, std::set<int>* setB) const {
-			return setA->size() < setB->size();
+		bool operator()(std::set<int> setA, std::set<int> setB) const {
+			return setA.size() < setB.size();
 		}
 	} setSizeComparison;
 

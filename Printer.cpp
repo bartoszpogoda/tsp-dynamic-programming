@@ -34,14 +34,14 @@ void Printer::print(Instance * instance) {
 	std::cout << out.str();
 }
 
-void Printer::print(std::vector<std::set<int>*>* subsets) {
-	std::vector<std::set<int>*>::iterator subsetIterator;
+void Printer::print(std::vector<std::set<int>>* subsets) {
+	std::vector<std::set<int>>::iterator subsetIterator;
 	std::set<int>::iterator elementIterator;
 
 	for (subsetIterator = subsets->begin(); subsetIterator != subsets->end(); subsetIterator++) {
 		std::cout << "{";
-		for (elementIterator = (*subsetIterator)->begin(); elementIterator != (*subsetIterator)->end(); elementIterator++) {
-			std::cout << (elementIterator != (*subsetIterator)->begin() ? ", " : "") << *elementIterator;
+		for (elementIterator = subsetIterator->begin(); elementIterator != subsetIterator->end(); elementIterator++) {
+			std::cout << (elementIterator != subsetIterator->begin() ? ", " : "") << *elementIterator;
 		}
 		std::cout << "}" << std::endl;
 	}

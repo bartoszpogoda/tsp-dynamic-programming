@@ -4,7 +4,7 @@
 #include <iostream>
 
 int main() {
-	std::vector<std::set<int>*>* verticleSubsets = SubsetGenerator::generateVerticleSubsets(4);
+	std::vector<std::set<int>>* verticleSubsets = SubsetGenerator::generateVerticleSubsets(4);
 
 	Printer::print(verticleSubsets);
 
