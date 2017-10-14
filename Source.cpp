@@ -1,28 +1,17 @@
 #include "SubsetGenerator.h"
+#include "Printer.h"
+#include "Instance.h"
 #include <iostream>
 
-void printSubsets(std::vector<std::set<int>*>* subsets);
-
 int main() {
-	SubsetGenerator generator = SubsetGenerator();
+	std::vector<std::set<int>*>* verticleSubsets = SubsetGenerator::generateVerticleSubsets(4);
 
-	std::vector<std::set<int>*>* verticleSubsets = generator.generateVerticleSubsets(4);
+	Printer::print(verticleSubsets);
 
-	printSubsets(verticleSubsets);
+	Instance::InstanceBuilder builder = Instance::InstanceBuilder(3);
+	builder.addDistance(0, 1, 2);
+	builder.addDistance(1, 0, 3);
+	Instance* instance = builder.build();
 
-	int x;
-	std::cin >> x;
-}
-
-void printSubsets(std::vector<std::set<int>*>* subsets) {
-	std::vector<std::set<int>*>::iterator subsetIterator;
-	std::set<int>::iterator elementIterator;
-
-	for (subsetIterator = subsets->begin(); subsetIterator != subsets->end(); subsetIterator++) {
-		std::cout << "{";
-		for (elementIterator = (*subsetIterator)->begin(); elementIterator != (*subsetIterator)->end(); elementIterator++) {
-			std::cout << (elementIterator != (*subsetIterator)->begin() ? ", " : "") <<  *elementIterator;
-		}
-		std::cout << "}" << std::endl;
-	}
+	Printer::print(instance);
 }
