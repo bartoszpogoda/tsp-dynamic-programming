@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iomanip>
 
-void Printer::print(Instance * instance) {
+void Printer::print(Instance* instance) {
 	std::stringstream out;
 
 	int argWidth = 4;

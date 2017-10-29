@@ -1,21 +1,19 @@
 #include "SubsetGenerator.h"
 #include <algorithm>
 
-std::vector<std::set<int>>* SubsetGenerator::generateVerticleSubsets(int numberOfCities) {
+std::vector<std::set<int>>* SubsetGenerator::generateVerticleSubsets(std::vector<int> verticleSet) {
 	std::vector<std::set<int>>* verticleSubsets = new std::vector<std::set<int>>();
 
-	std::vector<int> verticles = generateVerticleSet(numberOfCities - 1);
-
-	int numberOfSubsets = 1 << verticles.size();
+	int numberOfSubsets = 1 << verticleSet.size();
 
 	// iterate over binary subset masks 0 - doesnt contain, 1 - does contain
-	for (unsigned i = 0; i < numberOfSubsets; i++) {
+	for (unsigned i = 0; i < numberOfSubsets - 1; i++) {
 		std::set<int>* newSubset = new std::set<int>();
 
-		for (unsigned p = 0; p < verticles.size(); p++) {
+		for (unsigned p = 0; p < verticleSet.size(); p++) {
 			// for each vertex compare its binary position with current subset mask
 			if (i & (1 << p)) {
-				newSubset->insert(verticles[p]);
+				newSubset->insert(verticleSet[p]);
 			}
 		}
 
@@ -27,11 +25,21 @@ std::vector<std::set<int>>* SubsetGenerator::generateVerticleSubsets(int numberO
 	return verticleSubsets;
 }
 
-std::vector<int> SubsetGenerator::generateVerticleSet(int n) {
+std::vector<int> SubsetGenerator::generateVerticleVector(int n) {
 	std::vector<int> result;
 
-	for (unsigned i = 1; i <= n; i++) {
+	for (unsigned i = 1; i < n; i++) { 
 		result.push_back(i);
+	}
+
+	return result;
+}
+
+std::set<int> SubsetGenerator::generateFullSubset(int n) {
+	std::set<int> result;
+
+	for (unsigned i = 1; i < n; i++) {
+		result.insert(i);
 	}
 
 	return result;

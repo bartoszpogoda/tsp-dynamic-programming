@@ -1,7 +1,7 @@
 #pragma once
 
 class Instance {
-protected:
+private:
 	int** adjacencyMatrix;
 	int numberOfCities;
 	Instance(int numberOfCities);
@@ -9,6 +9,8 @@ protected:
 public:
 	int getDistance(int startVertex, int endVertex) { return adjacencyMatrix[startVertex][endVertex]; }
 	int getNumberOfCities() { return numberOfCities; }
+
+	static Instance* generateRandom(int numberOfCities);
 
 	class InstanceBuilder;
 };
@@ -19,8 +21,9 @@ private:
 public:
 	InstanceBuilder(int numberOfCities) : instance(new Instance(numberOfCities)) {};
 
-	void addDistance(int startVertex, int endVertex, int distance) {
+	InstanceBuilder* addDistance(int startVertex, int endVertex, int distance) {
 		instance->adjacencyMatrix[startVertex][endVertex] = distance;
+		return this;
 	};
 
 	Instance* build() { Instance* toReturn = instance; instance = new Instance(toReturn->numberOfCities); return toReturn; }
