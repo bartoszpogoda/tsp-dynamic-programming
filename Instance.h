@@ -7,6 +7,7 @@ private:
 	Instance(int numberOfCities);
 
 public:
+	~Instance();
 	int getDistance(int startVertex, int endVertex) { return adjacencyMatrix[startVertex][endVertex]; }
 	int getNumberOfCities() { return numberOfCities; }
 
@@ -25,6 +26,8 @@ public:
 		instance->adjacencyMatrix[startVertex][endVertex] = distance;
 		return this;
 	};
+
+	~InstanceBuilder() { delete instance; }
 
 	Instance* build() { Instance* toReturn = instance; instance = new Instance(toReturn->numberOfCities); return toReturn; }
 };

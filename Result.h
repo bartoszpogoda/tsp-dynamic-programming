@@ -1,14 +1,15 @@
 #pragma once
-#include <list>
 class Result {
 private:
 	int minDistance;
-	std::list<int> minPath;
-	Result();
+	int* path;
+	int pathSize;
+	Result(unsigned pathSize) : pathSize(pathSize), path(new int[pathSize]) {}
 
 public:
 	int getMinDistance() { return minDistance; }
-	std::list<int> getMinPath() { return std::list<int>(minPath); }
+	int getPathSize() { return pathSize; }
+	int getPathElem(int elem) { return path[elem]; }
 
 	class ResultBuilder;
 };
@@ -16,11 +17,12 @@ public:
 class Result::ResultBuilder {
 private:
 	Result* result;
+	int currentPathSize;
 public:
-	ResultBuilder() : result(new Result()) {};
+	ResultBuilder(unsigned pathSize) : result(new Result(pathSize)), currentPathSize(pathSize-1) {};
 
 	void setMinDistance(int minDistance) { result->minDistance = minDistance; }
-	void addPreviousVerticle(int previousVerticle) { result->minPath.push_front(previousVerticle); }
+	void addCityFromEnd(int anotherCityFromEnd) { result->path[currentPathSize--] = anotherCityFromEnd; }
 	
-	Result* build() { Result* toReturn = result; result = new Result(); return toReturn; }
+	Result* build() { Result* toReturn = result; result = new Result(toReturn->pathSize); return toReturn; }
 };

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <climits>
 
 void Printer::print(Instance* instance) {
 	std::stringstream out;
@@ -25,7 +26,7 @@ void Printer::print(Instance* instance) {
 		out << std::setw(argWidth) << std::setfill(' ') << i << "|";
 
 		for (size_t j = 0; j < n; j++)
-			out << std::setw(argWidth) << std::to_string(instance->getDistance(i, j)) << " ";
+			out << std::setw(argWidth) << (instance->getDistance(i, j) < INT_MAX ?  std::to_string(instance->getDistance(i, j)) : "oo") << " ";
 
 		out << std::endl;
 	}
@@ -34,15 +35,18 @@ void Printer::print(Instance* instance) {
 	std::cout << out.str();
 }
 
-void Printer::print(std::vector<std::set<int>>* subsets) {
-	std::vector<std::set<int>>::iterator subsetIterator;
-	std::set<int>::iterator elementIterator;
+void Printer::print(Result * result) {
+	std::stringstream out;
 
-	for (subsetIterator = subsets->begin(); subsetIterator != subsets->end(); subsetIterator++) {
-		std::cout << "{";
-		for (elementIterator = subsetIterator->begin(); elementIterator != subsetIterator->end(); elementIterator++) {
-			std::cout << (elementIterator != subsetIterator->begin() ? ", " : "") << *elementIterator;
-		}
-		std::cout << "}" << std::endl;
+	int argWidth = 2;
+
+	out << std::left << std::setw(7) << "Length" << "= " << result->getMinDistance() << std::endl;
+	out << std::left << std::setw(7) << "Path" << "= ";
+	out << std::setfill(' ');
+	for (size_t i = 0; i < result->getPathSize(); i++) {
+		out << std::setw(argWidth) << result->getPathElem(i) << (i != result->getPathSize() - 1 ? " - " : " ");
 	}
+
+	out << std::endl;
+	std::cout << out.str();
 }

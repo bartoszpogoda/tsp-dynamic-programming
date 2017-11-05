@@ -13,42 +13,99 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\TSP">
+      <UniqueIdentifier>{8f1d2c86-2354-4eb5-9046-6e11f6985a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TSP">
+      <UniqueIdentifier>{4be26352-17b9-4978-bfbf-d6c2a873c4d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{b6d47ed9-ecc7-49fe-8839-2df1b465bd89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface">
+      <UniqueIdentifier>{cec3c59d-94df-4a51-8090-c3a3bcbf09f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helper">
+      <UniqueIdentifier>{73f94ff3-25ff-4712-9091-4071e7ece978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TSP\Instance">
+      <UniqueIdentifier>{3e091e1f-078c-4262-8dd9-3d6df64adcae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TSP\Instance">
+      <UniqueIdentifier>{017215ab-88fa-4222-89a5-971f866a0c86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helper">
+      <UniqueIdentifier>{4a4a3766-2b5b-467e-98fd-213e7951a4ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Performance">
+      <UniqueIdentifier>{562dfa89-70d9-4e97-bbf8-e37cbdbba3da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Performance">
+      <UniqueIdentifier>{e99cc9aa-d5a6-4545-97ba-31a94a0ed987}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SubsetGenerator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="HeldKarpTSP.cpp">
+      <Filter>Source Files\TSP</Filter>
+    </ClCompile>
+    <ClCompile Include="FullSearchTSP.cpp">
+      <Filter>Source Files\TSP</Filter>
+    </ClCompile>
+    <ClCompile Include="CLInterface.cpp">
+      <Filter>Source Files\Interface</Filter>
     </ClCompile>
     <ClCompile Include="Instance.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TSP\Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Source Files\TSP\Instance</Filter>
     </ClCompile>
     <ClCompile Include="Printer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Helper</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithm.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files\Helper</Filter>
     </ClCompile>
-    <ClCompile Include="Result.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="PerformanceTester.cpp">
+      <Filter>Source Files\Performance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SubsetGenerator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="TSP.h">
+      <Filter>Header Files\TSP</Filter>
     </ClInclude>
-    <ClInclude Include="Instance.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="FullSearchTSP.h">
+      <Filter>Header Files\TSP</Filter>
+    </ClInclude>
+    <ClInclude Include="HeldKarpTSP.h">
+      <Filter>Header Files\TSP</Filter>
+    </ClInclude>
+    <ClInclude Include="CLInterface.h">
+      <Filter>Header Files\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Printer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithm.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SubsetUtil.h">
+      <Filter>Header Files\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Instance.h">
+      <Filter>Header Files\TSP\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>Header Files\TSP\Instance</Filter>
     </ClInclude>
     <ClInclude Include="Result.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TSP\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformanceTester.h">
+      <Filter>Header Files\Performance</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
